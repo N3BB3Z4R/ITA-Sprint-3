@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -18,78 +19,185 @@
 </head>
 
 <body>
+
+    <!-- navbar -->
+    <nav class="justify-content-between navbar navbar-expand-md bg-dark sticky-top px-5">
+        <!-- Back button -->
+        <a class="navbar-brand text-white" href="index.html"><span><i class="fas fa-shopping-cart mr-2"></i></span>
+        <span>Back</span> </a>
+        <!-- the collapse button for the navbar, now disabled as it is not needed -->
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="fas fa-bars d-md-none d-block"></i></span>
+        </button> -->
+        <!-- Buy button -->
+        <div class="m-2 final text-right shadow">
+            <button type="submit" id="btn" class="ms-3 p-2 px-4 btn btn-success shadow-lg" onclick="validate()"><i
+                    class="fas fa-cart-arrow-down p-2"></i>Buy</button>
+        </div>
+    </nav>
     <!-- header -->
     <h1 class="text-center head m-4">Checkout Page</h1>
     <!-- header -->
-    <!-- icons starts here -->
-    <div class="icons">
-        <div class="row mr-0">
-            <div class="col-sm-6">
-                <h2 class="my-3 mx-5 bord shadow"><i class="fas fa-dollar-sign bg p-4 mr-4"></i>Cash on Delivery</h2>
-            </div>
-            <div class="col-sm-6 ">
-                <h2 class="my-3 mx-5 bord shadow"><i class="fas fa-arrows-alt-h bg p-4 mr-4"></i>100% Return</h2>
-            </div>
-        </div>
-
-        <div class="row mr-0">
-            <div class="col-sm-6">
-                <h2 class="my-3 mx-5 bord shadow"><i class="far fa-thumbs-up bg p-4 mr-4"></i>Quality Assured</h2>
-            </div>
-            <div class="col-sm-6 ">
-                <h2 class="my-3 mx-5 bord shadow"><i class="fas fa-stopwatch bg p-4 mr-4"></i>Delivery on time</h2>
-            </div>
+    <div class="shadow container">
+        <div class="total container text-center justify-content-center">
+            <h4 class="col-12 m-0 m-md-3 p-4" role="alert">
+                Check your order.<br>And purchase your cart to get shipped now with the following items:
+            </h4>
+            <!-- the class cartCheckoutList brings the cart from the localstorage in shop.js -->
+            <ul class="fs-md-6 cartCheckoutList list-unstyled col-12 col-md-8 justify-content-center m-auto p-0 text-start">
+                <!-- here loads the cart list -->
+            </ul>
         </div>
     </div>
-    <!-- icons end here -->
     <!-- Checkout starts here -->
-    <form class="form">
-        <div class="row bord p-5 shadow m-5">
-            <div class="col-sm-6">
-                <div class="mt-3 row">
+    <form class="form was-validated container p-2"> 
+        <h3 class="text-center p-4 m-4">Please, fill your profile info:</h3>
+        <div class="bord shadow p-4">
+            <div class="form d-flex flex-wrap justify-content-around">
+                <div class="form-group col-sm-5 col-12 order-0 mt-3 row">
                     <h5 class="my-auto">First Name :</h5>
-                    <input class="ml-3 name input rounded p-2" type="text" placeholder="First Name" />
-                    <p id="errorName">Numbers in the name are not valid</p>
+                    <input class="name input form-control rounded p-2" type="text" pattern="[A-Za-z]{3,60}" placeholder="First Name" required />
+                    <!-- <p id="errorName" class="invalid-feedback bg-danger text-light">Numbers in the name are not valid</p> -->
                 </div>
-                <div class="mt-3 row ">
+                <div class="form-group col-sm-5 col-12 order-1 mt-3 row">
+                    <h5 class="my-auto name">Last Name :</h5>
+                    <input class="input form-control rounded p-2" type="text" pattern="[A-Za-z]{3,60}" placeholder="Last Name" required />
+                </div>
+                <div class="form-group col-sm-5 col-12 order-2 mt-3 row m-3">
                     <h5 class="my-auto">Email :</h5>
-                    <input class="ml-3 input rounded p-2" type="email" placeholder="Email" />
+                    <input class="input form-control rounded p-2" type="email" placeholder="Email" minlength="3" required />
+                    <!-- <p id="errorEmail" class="invalid-feedback bg-danger text-light float-start">Email is not valid</p> -->
                 </div>
-                <div class="mt-3 row ">
+                <div class="form-group col-sm-5 col-12 order-3 mt-3 row m-3 overflow-visible">
+                    <h5 class="my-auto">Password :</h5>
+                    <input class="input form-control password rounded p-2" title="(4-8 characters)" type="password" minlength="3"
+                        maxlength="8" placeholder="Password" required />
+                    <!-- <p id="errorPassword" class="invalid-feedback bg-danger text-light">Enter a correct password, between 4-8 chars long.</p> -->
+                </div>
+                <div class="form-group col-sm-5 col-12 order-4 mt-3 row m-3">
                     <h5 class="my-auto">Address :</h5>
-                    <input class="ml-3 input rounded p-2" type="text" placeholder="Address" />
+                    <input class="input form-control rounded p-2" type="text" placeholder="Address" required />
                 </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="mt-3 row">
-                    <h5 class="my-auto name my-auto">Last Name :</h5>
-                    <input class="ml-3 input rounded p-2" type="text" placeholder="Last Name" />
+                <div class="form-group col-sm-5 col-12 order-5 mt-3 row m-3">
+                    <h5 class="my-auto">Phone Number :</h5>
+                    <input class="phone input form-control rounded p-2" type="number" placeholder="Phone No." minlength="3" required />
+                    <p id="errorPhone" class="invalid-feedback bg-danger text-light">Invalid phone number!!</p>
                 </div>
-                <div class="mt-3 row">
-                    <h5 class="my-auto my-auto">Password :</h5>
-                    <input class="ml-3 input password rounded p-2" title="(4-8 characters)" type="password" minlength="4"
-                        maxlength="8" placeholder="Password" />
-                    <p id="errorPassword">Enter a correct password</p>
-                </div>
-                <div class="mt-3 row">
-                    <h5 class="my-auto my-auto">Phone Number :</h5>
-                    <input class="ml-3 phone input rounded p-2" type="number" placeholder="Phone No." />
-                    <p id="errorPhone">Invalid phone number!!</p>
-                </div>
+                
             </div>
         </div>
 
-
-        <!-- Checkout ends here -->
-        <!-- Buy button -->
-        <div class="m-5 final text-right">
-            <button type="submit" id="btn" class="p-2 px-4 btn btn-primary shadow-lg" onclick="validate()"><i
-                    class="fas fa-cart-arrow-down p-2"></i>Buy</button>
+        <h3 class="text-center p-4 m-4">And your purchase info:</h3>
+        <div class="bord shadow p-4">
+            <div class="form d-flex flex-wrap justify-content-around">
+                <!-- Credit Card Type Radialbutton -->
+                <div class="form-group col-sm-5 col-12 order-2 mt-3 row m-3">
+                    <h5 class="my-auto col-12">Credit Card kind :</h5>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="creditCardType" id="creditCardType1" checked>
+                        <label class="form-check-label" for="creditCardType1">
+                          Mastercard
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="creditCardType" id="creditCardType2">
+                        <label class="form-check-label" for="creditCardType2">
+                          Visa
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="creditCardType" id="creditCardType3">
+                        <label class="form-check-label" for="creditCardType3">
+                          American Express
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-sm-5 col-12 order-2 mt-3 row m-3">
+                    <h5 class="my-auto col-12">Shipping Method :</h5>
+                    <div class="row col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="shippingMethod" id="shippingMethod1" checked>
+                            <label class="form-check-label" for="shippingMethod1">
+                            SEUR
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="shippingMethod" id="shippingMethod2">
+                            <label class="form-check-label" for="shippingMethod2">
+                            DHL
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="shippingMethod" id="shippingMethod3">
+                            <label class="form-check-label" for="shippingMethod3">
+                            Correos Express
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="shippingMethod" id="shippingMethod4">
+                            <label class="form-check-label" for="shippingMethod4">
+                            FedEx
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- Credit Card Field -->
+                <div class="form-group col-sm-5 col-12 order-3 mt-3 row m-3">
+                    <h5 class="my-auto">Credit Card number :</h5>
+                    <input onkeypress="checkCreditCard()" class="ccard input form-control rounded p-2" type="number" pattern="[0-9]{4}\\s[0-9]{4}\\s[0-9]{4}\\s[0-9]{4}" autocomplete="cc-number" minlength="16" maxlength="20" placeholder="xxxx xxxx xxxx xxxx" required />
+                    <p id="errorPhone" class="invalid-feedback bg-danger text-light">Invalid phone number!!</p>
+                </div>
+                
+                <div class="form-group col-sm-5 col-12 order-4 mt-3 row m-3">
+                    <h5 class="my-auto">Shipping Address :</h5><h6 class="">(optional)</h6>
+                    <input class="input form-control rounded p-2" type="text" name="optionalAdress" placeholder="Optional Address" />
+                </div>
+                <!-- Credit Card Field -->
+                <!-- <div class="form-group col-sm-12 col-12 order-5 mt-3 row m-4">
+                    <h5 class="my-auto">Credit Card :</h5>
+                    <input class="phone input form-control rounded p-2" type="number" pattern="[0-9\s]{4, 4, 4, 4, 4, 19}" autocomplete="cc-number" minlength="20"maxlength="22" placeholder="xxxx xxxx xxxx xxxx" required />
+                    <p id="errorPhone" class="invalid-feedback bg-danger text-light">Invalid phone number!!</p>
+                </div> -->
+            </div>
         </div>
+
+        <!-- icons starts here -->
+        <div class="icons text-center p-4 m-4">
+            <h3 class="py-4">Remember our advantages!</h3>
+            <div class="row mr-0">
+                <div class="col-sm-6">
+                    <h4 class="bg-primary text-light my-md-0 my-3 mx-1 bord"><i class="fas fa-dollar-sign bg p-4 mr-4"></i>Cash on Delivery</h4>
+                </div>
+                <div class="col-sm-6">
+                    <h4 class="bg-primary text-light my-md-0 my-3 mx-1 bord"><i class="fas fa-arrows-alt-h bg p-4 mr-4"></i>100% Return</h4>
+                </div>
+            </div>
+
+            <div class="row mr-0">
+                <div class="col-sm-6">
+                    <h4 class="bg-primary text-light my-3 mx-1 bord"><i class="far fa-thumbs-up bg p-4 mr-4"></i>Quality Assured</h4>
+                </div>
+                <div class="col-sm-6 ">
+                    <h4 class="bg-primary text-light my-3 mx-1 bord"><i class="fas fa-stopwatch bg p-4 mr-4"></i>Delivery on time</h4>
+                </div>
+            </div>
+        </div>
+        <!-- icons end here -->
+
+    <!-- Checkout ends here -->
     </form>
-    <!-- Buy Button -->
+
+    <!-- footer js filled with showFooter() in shop.js -->
+    <footer></footer>
+
     <!-- script tags -->
+    <script src="js/shop.js"></script>
     <script src="js/checkout.js"></script>
+    <!-- bootstrap 5 js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
 

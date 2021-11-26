@@ -6,3 +6,43 @@ body {
 #errorPassword, #errorName, #errorPhone {
     display: none;
 }
+.icons h4 {
+    box-shadow: inset 0px 1px 7px rgb(46, 46, 46);
+    transition: 1500ms;
+    animation-name: glow;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    font-size: 1rem;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: inset 0px 1px 7px rgb(46, 46, 46);
+    }
+    50% {
+        box-shadow: inset 0px 1px 18px rgb(238, 238, 238), 0px 0px 0px rgb(105, 105, 105);
+    }
+    100% {
+        box-shadow: inset 0px 1px 7px rgb(46, 46, 46);
+    }
+}
+.icons h4:hover {
+    box-shadow: inset 0px 1px 18px rgb(238, 238, 238), 0px 0px 0px rgb(105, 105, 105);
+    transition: 400ms;
+    border-radius: 30px;
+}
+
+/* fixes on the cart list loaded in checkout from localstorage */
+.cartCheckoutList ul {
+    width: 100%!important;
+}
+.cartCheckoutList li {
+    display: block;
+    margin: 1rem;
+}
+.cartCheckoutList button {
+    display: none;
+}
+.subtotals {
+    text-align: center;
+}

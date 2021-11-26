@@ -1,4 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 body{
     font-family: Poppins;
+    transition: 400ms;
+}
+.card {
+    background-color: rgb(224, 224, 224);
+    cursor: pointer;
+    transition: 500ms;
+    margin: 2rem auto;
+}
+.card:hover {
+    background-color: rgb(255, 255, 255);
+    transition: 700ms;
+}
+header {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: 0% 50%;
+    background-image: url('https://image.cnbcfm.com/api/v1/image/105023145-GettyImages-200142282-001.jpg?v=1533839676');
 }

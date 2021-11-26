@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -17,31 +18,83 @@
     <title>ShopNow</title>
 </head>
 
-<body>
+<div>
     <!-- header -->
-    <header class="m-5">
-        <h1 class="text-center m-5"><i class="fas fa-shopping-cart mr-2"></i> ShopNow</h1>
-        <h3 class="text-center m-3">Welcome to your Online Shopping Store.</h3>
+    <div class="d-md-flex justify-content-between align-middle">
+      <!-- Clickable logo and site name -->
+      <a class="col-12 col-md-6 text-center text-md-start text-decoration-none text-dark" href="index.html">
+        <h2 class="text-left p-4" style="margin-top: 1.5rem"><i class="fas fa-shopping-cart mr-2"></i> ShopNow</h2>
+      </a>
+      <!-- Search products input -->
+      <input type="search" name="search" onkeypress="searchProduct(search)" class="form-control shadow text-dark bg-light px-4 mx-auto m-4 m-md-5 w-75" id="search" placeholder="Search products...">
+    </div>
+    <!-- jumbo -->
+    <header class="align-middle d-flex">        
+        <h1 class="text-center text-light m-auto">Welcome to your Online Shopping Store.</h1>
     </header>
 
-    <!-- Buttons -->
-    <h3 class="text-center">Select your category:</h3>
-    <div class="text-center">
-        <button type="button" onclick="window.location.href = 'shop.html#grocery';" class="btn m-4 mt-5 btn btn-primary">Grocery</button>
-        <button type="button" onclick="window.location.href = 'shop.html#beauty';" class="btn m-4 mt-5 btn btn-primary">Beauty</button>
-        <button type="button" onclick="window.location.href = 'shop.html#clothes';" class="btn m-4 mt-5 btn btn-primary">Clothes</button>
-    </div>
+    <!-- Search Container to load the search result on top -->
+    <div class="searchContainer"></div>
 
-    <!-- script tags -->
+    <!-- Sections Buttons -->
+    <h3 class="text-center mt-4">Select your category:</h3>
+    <div class="mt-4 justify-content-center gap-4 m-auto d-md-flex no-wrap">
+      <a onclick="window.location.href = 'shop.html';"> <!-- remove #grocery to make it fit well -->
+        <div class="card shadow" style="width: 16rem;">
+          <img src="./images/cat-groceries.jpg" class="card-img-top" alt="Groceries Category">
+          <div class="card-body">
+            <h5 class="card-title">Feed your pantry</h5>
+            <p class="card-text">Get your groceries here.</p>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            <!-- <button type="button" onclick="window.location.href = 'shop.html#grocery';" class="btn m-4 mt-5 btn btn-primary">Grocery</button> -->
+          </div>
+        </div>
+      </a>
+      <a onclick="window.location.href = 'shop.html#beauty';">
+        <div class="card shadow" style="width: 16rem;">
+          <img src="./images/cat-beauty.jpg" class="card-img-top" alt="Beauty Category">
+          <div class="card-body">
+            <h5 class="card-title">Shine on selfies</h5>
+            <p class="card-text">Get your beauty products.</p>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            <!-- <button type="button" onclick="window.location.href = 'shop.html#beauty';" class="btn m-4 mt-5 btn btn-primary">Beauty</button> -->
+          </div>
+        </div>
+      </a>
+      <a onclick="window.location.href = 'shop.html#clothes';">
+        <div class="card shadow" style="width: 16rem;">
+          <img src="./images/cat-clothes.jpg" class="card-img-top" alt="Clothes Category">
+          <div class="card-body">
+            <h5 class="card-title">Shift your outfit</h5>
+            <p class="card-text">Get your swag here.</p>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            <!-- <button type="button" onclick="window.location.href = 'shop.html#clothes';" class="btn m-4 mt-5 btn btn-primary">Clothes</button> -->
+          </div>
+        </div>
+      </a>
+      <!-- <button type="button" onclick="window.location.href = 'shop.html#grocery';" class="btn m-4 mt-5 btn btn-primary">Grocery</button>
+      <button type="button" onclick="window.location.href = 'shop.html#beauty';" class="btn m-4 mt-5 btn btn-primary">Beauty</button>
+      <button type="button" onclick="window.location.href = 'shop.html#clothes';" class="btn m-4 mt-5 btn btn-primary">Clothes</button> -->
+    </div>
+    
+    <!-- footer js filled with showFooter() on shop.js -->
+    <footer></footer>
+
+    <!-- load shop.js to get the products array for search and footer include -->
+    <script src="js/shop.js"></script>
+
+    <!-- script tags (not used with bootstrap 5) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
+    <!-- bootstrap js -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>
